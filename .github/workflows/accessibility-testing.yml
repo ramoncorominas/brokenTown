@@ -1,0 +1,71 @@
+name: Accessibility Testing
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  accessibility-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+        
+    - name: Install axe-core CLI
+      run: npm install -g @axe-core/cli
+      
+    - name: Install http-server
+      run: npm install -g http-server
+      
+    - name: Start local server in background
+      run: |
+        http-server . -p 8080 &
+        sleep 3
+        
+    - name: Test all HTML pages
+      run: |
+        echo "Testing accessibility for all HTML files in test-pages/"
+        for file in test-pages/*.html; do
+          if [ -f "$file" ]; then
+            filename=$(basename "$file")
+            echo "Testing $filename..."
+            axe http://localhost:8080/test-pages/$filename --save results-$filename.json || true
+          fi
+        done
+        
+    - name: Upload test results
+      uses: actions/upload-artifact@v4
+      if: always()
+      with:
+        name: accessibility-results
+        path: results-*.json
+        
+    - name: Check for violations
+      run: |
+        echo "Checking for WCAG violations (excluding best practices)..."
+        violations=0
+        for file in results-*.json; do
+          if [ -f "$file" ]; then
+            # Count only violations that are NOT tagged as "best-practice"
+            count=$(jq '[.[].violations[] | select(.tags | contains(["best-practice"]) | not)] | length' "$file")
+            echo "$file: $count WCAG violations found"
+            violations=$((violations + count))
+          fi
+        done
+        
+        echo "Total WCAG violations: $violations"
+        
+        if [ $violations -gt 0 ]; then
+          echo "WCAG violations detected. Review the artifacts for details."
+          exit 1
+        else
+          echo "No WCAG violations found!"
+        fi
