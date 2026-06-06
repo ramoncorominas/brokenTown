@@ -1,0 +1,29 @@
+{
+  "projects": [
+    {
+      "name": "Project Name",
+      "id": "project-name",
+      "pageList": [
+        {
+          "name": "Page 1",
+          "url": "http://webtestingcourse.dequecloud.com/",
+          "actions": [
+            "wait for 1s",
+            "analyze with title \"home-page\"",
+            "select element \"fieldset > input[type='text'][name='q']\"",
+            "change the value of \"fieldset > input[type='text'][name='q']\" to \"laptop\"",
+            "select element \"#go\"",
+            "wait for 1s",
+            "analyze with title \"search-results\"",
+            "select element \"li:nth-child(1) > a[href$='laptop1.php']\"",
+            "wait for 1s",
+            "analyze with title \"laptop\"",
+            "select element \"a > img[src$='addToCartButton.gif']\"",
+            "wait for 1s",
+            "analyze with title \"add-to-cart\""
+          ]
+        }
+      ]
+    }
+  ]
+}

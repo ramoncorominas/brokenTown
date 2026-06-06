@@ -1,0 +1,26 @@
+{
+  "projects": [
+    {
+      "name": "Project Name",
+      "id": "project-name",
+      "pageList": [
+        {
+          "name": "Page 1",
+          "url": "https://phptravels.net/login",
+          "actions": [
+            "select element \".form-group > input[type='email'][name='email']\"",
+            "change the value of \".form-group > input[type='email'][name='email']\" to \"supplier@phptravels.com\"",
+            "select element \".form-group.mb-2 > input[type='password'][name='password']\"",
+            "change the value of \".form-group.mb-2 > input[type='password'][name='password']\" to \"demosupplier\"",
+            "select element \"#fadein > .container > div > .modal-content.align-self-center > .modal-body > .contact-form-action > form > div:nth-child(3) > button\"",
+            "wait for 5s"
+          ]
+        },
+        {
+          "name": "Page 2",
+          "url": "https://phptravels.net/account/dashboard"
+        }
+      ]
+    }
+  ]
+}

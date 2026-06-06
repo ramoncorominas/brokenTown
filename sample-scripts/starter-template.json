@@ -1,0 +1,19 @@
+{
+  "projects": [
+    {
+      "name": "example-name",
+      "id": "example-id",
+      "pageList": [
+        {
+          "name": "Page 1",
+          "url": "https://changeme.com",
+          "actions": [
+            "action 1",
+            "action 2",
+            "action 3"
+          ]
+        }
+      ]
+    }
+  ]
+}
