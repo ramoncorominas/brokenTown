@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de contacto</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <div class="main-header">
+        <a aria-label="Commit Conf 2026" href="https://2026.commit-conf.com/">
+            <img src="img/logo-commit.svg" width="500">
+        </a>
+    </div>
+
+    <div class="form-container">
+        <h1>Contacte con nosotros</h1>
+        <form>
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type=" text" id="name" name="name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Correo electrónico</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Teléfono</label>
+                <input type="text" id="phone" name="phone">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+
+            <button type="submit" role="superbutton">
+                Enviar mensaje
+            </button>
+        </form>
+    </div>
+</body>
+
+</html>

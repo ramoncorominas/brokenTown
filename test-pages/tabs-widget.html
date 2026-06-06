@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>
+		Tabs Widget - Accessibility Test
+	</title>
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/tabs-widget.css">
+</head>
+
+<body>
+
+	<div class="form-container">
+		<h1>Tabs Widget Example</h1>
+		<p>This widget demonstrates a simple tabs interface with markdown content and its rendered version.</p>
+
+		<div class="tabs-container">
+			<ul role="tablist" class="tab-list" aria-label="Content view options">
+				<li role="presentation">
+					<button role="tab" aria-selected="true" aria-controls="markdown-panel" id="markdown-tab"
+						tabindex="0">
+						Markdown Source
+					</button>
+				</li>
+				<li role="presentation">
+					<button role="tab" aria-selected="false" aria-controls="rendered-panel" id="rendered-tab"
+						tabindex="-1">
+						Rendered View
+					</button>
+				</li>
+			</ul>
+
+			<div role="tabpanel" id="markdown-panel" aria-labelledby="markdown-tab" class="tab-panel active">
+				<div class="markdown-content">## Welcome to Markdown
+
+					This is a **sample markdown document** that demonstrates various markdown features.
+
+					### Features List
+
+					- **Bold text** and *italic text*
+					- `Inline code` examples
+					- Lists and nested items
+					- Links and more
+
+					### Code Example
+
+					Here's a simple code snippet:
+
+					```javascript
+					function greet(name) {
+					return `Hello, ${name}!`;
+					}
+					```
+
+					> **Note:** Markdown is a lightweight markup language that's easy to read and write.
+
+					### Why Use Markdown?
+
+					1. Simple syntax
+					2. Readable in plain text
+					3. Converts easily to HTML
+					4. Widely supported
+
+					For more information, visit [markdown guide](https://www.markdownguide.org).</div>
+			</div>
+
+			<div role="tabpanel" id="rendered-panel" aria-labelledby="rendered-tab" class="tab-panel">
+				<div class="rendered-content">
+					<h2>Welcome to Markdown</h2>
+					<p>This is a <strong>sample markdown document</strong> that demonstrates various markdown features.
+					</p>
+
+					<h3>Features List</h3>
+					<ul>
+						<li><strong>Bold text</strong> and <em>italic text</em></li>
+						<li><code>Inline code</code> examples</li>
+						<li>Lists and nested items</li>
+						<li>Links and more</li>
+					</ul>
+
+					<h3>Code Example</h3>
+					<p>Here's a simple code snippet:</p>
+					<pre><code>function greet(name) {
+	return `Hello, ${name}!`;
+}</code></pre>
+
+					<blockquote>
+						<strong>Note:</strong> Markdown is a lightweight markup language that's easy to read and write.
+					</blockquote>
+
+					<h3>Why Use Markdown?</h3>
+					<ol>
+						<li>Simple syntax</li>
+						<li>Readable in plain text</li>
+						<li>Converts easily to HTML</li>
+						<li>Widely supported</li>
+					</ol>
+
+					<p>For more information, visit <a href="https://www.markdownguide.org">markdown guide</a>.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<script src="js/tabs-widget.js"></script>
+</body>
+
+</html>
